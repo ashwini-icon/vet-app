@@ -1,0 +1,43 @@
+<div class="container body">
+  <div class="main_container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="home">Navbar</a>
+       <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>  
+    </nav>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a id= "m1" (click)="changeView(1)"><span>Veterinary Content</span></a>
+      </li>
+      <li class="nav-item">
+        <a id= "m2" (click)="changeView(2)"><span>Videos</span></a>
+      </li>
+      <li class="nav-item">
+        <a id= "m3" (click)="changeView(3)"><span>Clinical Calculators</span></a>
+      </li>
+      <li class="nav-item">
+        <a id= "m4" (click)="changeView(4)"><span>Resources</span></a>
+      </li>
+      <li class="nav-item">
+        <a id= "m5" (click)="changeView(5)"><span>News & Commentary</span></a>
+      </li>
+      <li class="nav-item">
+        <a id= "m6" (click)="changeView(6)"><span>Pet Health</span></a>
+      </li>
+      <li class="nav-item">
+        <a id= "m7" (click)="changeView(7)"><span>Favorites</span></a>
+      </li>
+    </ul>
+  </div>
+  <div id="main">
+    <app-vet-content *ngIf = "selectedView == 1"></app-vet-content>
+    <app-videos *ngIf = "selectedView == 2"></app-videos>
+    <app-clinical-calculator *ngIf = "selectedView == 3"></app-clinical-calculator>
+    <app-resources *ngIf = "selectedView == 4"></app-resources>
+    <app-news-commentary *ngIf = "selectedView == 5"></app-news-commentary>
+    <app-pet-health *ngIf = "selectedView == 6"></app-pet-health>
+    <app-favorites *ngIf = "selectedView == 7"></app-favorites>
+  </div>
+</div>

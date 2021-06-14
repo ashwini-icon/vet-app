@@ -1,0 +1,31 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="login-wrap p-4 p-md-5">
+              
+              <h3 class="text-center mb-4">Login Here</h3>
+                    <form action="#" class="login-form">
+                  <div class="form-group">
+                      <input type="text" class="form-control rounded-left" placeholder="Username" [(ngModel)] = "userName" name="username" required>
+                  </div>
+            <div class="form-group d-flex">
+              <input type="password" class="form-control rounded-left" placeholder="Password" required [(ngModel)]="userPass" name="password">
+            </div>
+            <div class="form-group d-md-flex">
+                <div class="w-50 text-md-left">
+                    <a href="#">New User?Register</a>
+                            </div>
+                            <div class="w-50 text-md-right">
+                                <a href="#">Forgot Password</a>
+                            </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" (click) = "LoginUser()" class="btn btn-primary rounded submit p-3 px-5">Login</button>
+            </div>
+          </form>
+        </div>
+            </div>
+        </div>
+    </div>
+</section>

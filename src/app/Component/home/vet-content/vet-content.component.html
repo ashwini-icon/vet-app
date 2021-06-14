@@ -1,0 +1,11 @@
+<form>
+    <input type="text" name="sec_title"  [(ngModel)]="sec_title" >
+    <button type="submit" class="btn btn-success" (click)="addsection()" >Submit</button>
+</form>
+<ul class="chapterlist">
+    <li class="content" *ngFor="let chapter of chapterlist">{{chapter.chapter_name}}</li>
+</ul>
+<form>
+    <input type="text" name="sub_sec_title"  [(ngModel)]="sub_sec_title" >
+    <button type="submit" class="btn btn-success" (click)="addsubsection()" >Submit</button>
+</form>
