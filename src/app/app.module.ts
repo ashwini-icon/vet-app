@@ -15,6 +15,7 @@ import { NewsCommentaryComponent } from './Component/home/news-commentary/news-c
 import { PetHealthComponent } from './Component/home/pet-health/pet-health.component';
 import { FavoritesComponent } from './Component/home/favorites/favorites.component';
 import { VetcontentService } from './services/vetcontent.service';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { VetcontentService } from './services/vetcontent.service';
     FormsModule,
     HttpClientModule,  
     AppRoutingModule, BrowserAnimationsModule,
+    AngularEditorModule
     
   ],
   providers: [VetcontentService],
