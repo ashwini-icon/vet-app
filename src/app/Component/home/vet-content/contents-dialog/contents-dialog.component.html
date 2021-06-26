@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Sections For {{data.chapter.chapter}} Chapter</h2>
+<h2 mat-dialog-title>Contents For {{data.section.section}} Section</h2>
 <mat-dialog-content class="mat-typography">
   <div class="demo-button-container" style= "width: 50%">
     <button mat-raised-button (click)="addData()" class="demo-button">
-      Add New Section
+      Add New Content
     </button>
   </div>
 
@@ -14,18 +14,18 @@
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="section">
-      <th mat-header-cell *matHeaderCellDef>Section</th>
-      <td mat-cell *matCellDef="let element">{{element.section}}</td>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{element.title}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="contents">
-      <th mat-header-cell *matHeaderCellDef>No. Of Contents</th>
-      <td mat-cell *matCellDef="let element">{{element.contents}}</td>
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef>Author</th>
+      <td mat-cell *matCellDef="let element">{{element.author}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "sectionClicked(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "contentClicked(row)"></tr>
   </table>
 
 </mat-dialog-content>

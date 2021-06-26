@@ -62,6 +62,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { FontAwesomeModule   } from '@fortawesome/angular-fontawesome'
 import { SectionsDialogContentComponent } from './Component/home/vet-content/sections-dialog/sections-dialog.component';
+import { ContentsDialogComponent } from './Component/home/vet-content/contents-dialog/contents-dialog.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { SectionsDialogContentComponent } from './Component/home/vet-content/sec
     FavoritesComponent,
     NavigationBarComponent,
     SectionsDialogContentComponent,
+    ContentsDialogComponent,
 
   ],
   imports: [

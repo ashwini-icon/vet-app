@@ -2,6 +2,7 @@ import { Component, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Content } from "src/app/Models/Content";
 import { Section } from "src/app/Models/Section";
+import { ContentsDialogComponent } from "../contents-dialog/contents-dialog.component";
 
 @Component({
   selector: 'sections-dialog',
@@ -12,7 +13,7 @@ export class SectionsDialogContentComponent {
   dataSource : any = [];
   displayedColumns: string[] = ['position', 'section', 'contents' ];
 
-  constructor(
+  constructor( public dialog: MatDialog,
     public dialogRef: MatDialogRef<SectionsDialogContentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
       this.createDataSourceArray();
@@ -30,7 +31,16 @@ export class SectionsDialogContentComponent {
     this.dataSource = source;
     console.log(source);
   }
-  sectionClicked(row:any) {
 
+  sectionClicked(section:any) {
+    let data = {section:section, contents:this.data.contents?.filter((content: Content) => content.fk_section_id = section.section_id)};
+    this.openDialog(data);
+  }
+
+  openDialog(data:any) {
+    const dialogRef = this.dialog.open(ContentsDialogComponent,{ width: '50%', data:data});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
