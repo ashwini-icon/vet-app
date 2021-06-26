@@ -5,6 +5,8 @@ import { v4 as uuid } from 'uuid';
 import { Chapter } from 'src/app/Models/Chapter';
 import { Section } from 'src/app/Models/Section';
 import { Content } from 'src/app/Models/Content';
+import { MatDialog } from '@angular/material/dialog';
+import { SectionsDialogContentComponent } from './sections-dialog/sections-dialog.component';
 
 @Component({
   selector: 'app-vet-content',
@@ -32,7 +34,7 @@ export class VetContentComponent implements OnInit {
   dataSource : any = [];
   displayedColumns: string[] = ['position', 'chapter', 'sections', 'contents' ];
   expandedElement: null;
-  constructor(private vetcon:VetcontentService) { }
+  constructor(private vetcon:VetcontentService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.vetcon.getAllChapters().subscribe((responseData : any) => {
@@ -67,14 +69,23 @@ export class VetContentComponent implements OnInit {
     this.chapterlist.forEach((chapter, index) => {
       let sectionsForChapter = this.sectionList?.filter(section => section.fk_chapter_id = chapter.chapter_id);
       let contentsForChapter = this.contentList?.filter(content => content.fk_chapter_id = chapter.chapter_id);
-      source.push({id:chapter.chapter_id, position:index+1, chapter:chapter.chapter_name, sections:sectionsForChapter?.length, contents:contentsForChapter?.length })
+      source.push({chapter_id:chapter.chapter_id, position:index+1, chapter:chapter.chapter_name, sections:sectionsForChapter?.length, contents:contentsForChapter?.length })
     });
     this.dataSource = source;
     console.log(source);
   }
 
   chapterClicked(chapter:any){
-
+    let sectionsForChapter = this.sectionList?.filter(section => section.fk_chapter_id = chapter.chapter_id);
+    let contentsForChapter = this.contentList?.filter(content => content.fk_chapter_id = chapter.chapter_id);
+    let data = {chapter:chapter, sections:sectionsForChapter, contents:contentsForChapter};
+    this.openDialog(data);
   }
 
+  openDialog(data:any) {
+    const dialogRef = this.dialog.open(SectionsDialogContentComponent,{ width: '50%', data:data});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
