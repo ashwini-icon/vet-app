@@ -1,43 +1,91 @@
-<div class="container body">
-  <div class="main_container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="home">Navbar</a>
-       <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>  
-    </nav>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a id= "m1" (click)="changeView(1)"><span>Veterinary Content</span></a>
-      </li>
-      <li class="nav-item">
-        <a id= "m2" (click)="changeView(2)"><span>Videos</span></a>
-      </li>
-      <li class="nav-item">
-        <a id= "m3" (click)="changeView(3)"><span>Clinical Calculators</span></a>
-      </li>
-      <li class="nav-item">
-        <a id= "m4" (click)="changeView(4)"><span>Resources</span></a>
-      </li>
-      <li class="nav-item">
-        <a id= "m5" (click)="changeView(5)"><span>News & Commentary</span></a>
-      </li>
-      <li class="nav-item">
-        <a id= "m6" (click)="changeView(6)"><span>Pet Health</span></a>
-      </li>
-      <li class="nav-item">
-        <a id= "m7" (click)="changeView(7)"><span>Favorites</span></a>
-      </li>
-    </ul>
-  </div>
-  <div id="main">
-    <app-vet-content *ngIf = "selectedView == 1"></app-vet-content>
-    <app-videos *ngIf = "selectedView == 2"></app-videos>
-    <app-clinical-calculator *ngIf = "selectedView == 3"></app-clinical-calculator>
-    <app-resources *ngIf = "selectedView == 4"></app-resources>
-    <app-news-commentary *ngIf = "selectedView == 5"></app-news-commentary>
-    <app-pet-health *ngIf = "selectedView == 6"></app-pet-health>
-    <app-favorites *ngIf = "selectedView == 7"></app-favorites>
-  </div>
+<div class="container">
+  <mat-toolbar class="app-toolbar">
+    <span>Vetnary App Dashboard</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <mat-grid-list cols="4" rowHeight="2:1" class="center-screen">
+    <mat-grid-tile (click) = "gotoMenu(1)">
+      <mat-card>
+        <mat-card-header> </mat-card-header>
+        <mat-card-content>
+          <fa-icon [icon]="fileTextIcon" style="font-size: 4em;color:gray"></fa-icon>
+          <div>
+            <p>Veterinary Content</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile (click) = "gotoMenu(2)">
+      <mat-card>
+        <mat-card-header> </mat-card-header>
+        <mat-card-content>
+          <fa-icon [icon]="fileVideoIcon" style="font-size: 4em;color:olive;"></fa-icon>
+          <div>
+            <p>Videos</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile (click) = "gotoMenu(3)">
+      <mat-card>
+        <mat-card-header> </mat-card-header>
+        <mat-card-content>
+          <fa-icon [icon]="fileCalculatorIcon" style="font-size: 4em;color:mediumorchid;"></fa-icon>
+          <div>
+            <p>Clinical Calculators</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile (click) = "gotoMenu(4)">
+      <mat-card>
+        <mat-card-header> </mat-card-header>
+        <mat-card-content>
+          <fa-icon [icon]="fileBookMedical" style="font-size: 4em;color:mediumblue;"></fa-icon>
+          <div>
+            <p>Resources</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile (click) = "gotoMenu(5)">
+      <mat-card>
+        <mat-card-header> </mat-card-header>
+        <mat-card-content>
+          <fa-icon [icon]="fileNews" style="font-size: 4em;color:limegreen;"></fa-icon>
+          <div>
+            <p>News & Commentary</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile (click) = "gotoMenu(6)">
+      <mat-card>
+        <mat-card-header> </mat-card-header>
+        <mat-card-content>
+          <fa-icon [icon]="filePetHealth" style="font-size: 4em;color:lightblue;"></fa-icon>
+          <div>
+            <p>Pet Health</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile (click) = "gotoMenu(7)">
+      <mat-card>
+        <mat-card-header> </mat-card-header>
+        <mat-card-content>
+          <fa-icon [icon]="fileFavourite" style="font-size: 4em;color:red;"></fa-icon>
+          <div>
+            <p>Favorites</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

@@ -1,0 +1,39 @@
+mat-grid-tile {
+  padding: 20px 20px 20px 20px;
+}
+
+mat-grid-list {
+  margin: 0 auto;
+  background: lightblue;
+}
+
+.container{
+  height: 100%;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+mat-card {
+  width: calc(100% - 10%);
+  height: calc(100% - 20%);
+  justify-content: center
+}
+mat-card-content{
+  justify-content: center
+}

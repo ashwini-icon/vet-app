@@ -1,30 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BaseServiceConfig } from './base-service-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VetcontentService {
+export class VetcontentService extends BaseServiceConfig{
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    super();
+  }
 
   AddContent(param :{}):Observable <any>{
-    return this.http.post<any>('http://127.0.0.1:6013/vet_app/api/addcontent',param);
+    return this.http.post<any>(this.baseURL+'api/addcontent',param);
   }
   AddSubContent(param :{}):Observable <any>{
-    return this.http.post<any>('http://127.0.0.1:6013/vet_app/api/addsubcontent',param);
+    return this.http.post<any>(this.baseURL+'api/addsubcontent',param);
   }
   AddMainContent(param :{}):Observable <any>{
-    return this.http.post<any>('http://127.0.0.1:6013/vet_app/api/addmaincontent',param);
+    return this.http.post<any>(this.baseURL+'api/addmaincontent',param);
   }
-  getAllChapter():Observable <any>{
-    return this.http.get<any>('http://127.0.0.1:6013/vet_app/api/getchapterlist');
+  getAllChapters():Observable <any>{
+    return this.http.get<any>(this.baseURL+'api/getAllChapters');
   }
-  getAllsubChapter():Observable <any>{
-    return this.http.get<any>('http://127.0.0.1:6013/vet_app/api/getallsubChapter');
+  getAllSections():Observable <any>{
+    return this.http.get<any>(this.baseURL+'api/getAllSections');
   }
-  getAllMainContent():Observable <any>{
-    return this.http.get<any>('http://127.0.0.1:6013/vet_app/api/getallMainContent');
+  getAllContents():Observable <any>{
+    return this.http.get<any>(this.baseURL+'api/getAllContent');
   }
 }

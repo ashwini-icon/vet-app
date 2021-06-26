@@ -1,28 +1,32 @@
-<form>
-    <input type="text" name="sec_title"  [(ngModel)]="sec_title" >
-    <button type="submit" class="btn btn-success" (click)="addsection()" >Submit</button>
-</form>
-<ul class="chapterlist">
-    <li class="content" *ngFor="let chapter of chapterlist">{{chapter.chapter_name}}<a href="#">Add new Chapter</a>
-        <ul *ngFor="let subchapter of subchapterlist">
-            <li class="content" *ngIf="(subchapter.fk_chapter_id == chapter.chapter_id)">{{subchapter.subhead_name}}<a (click)="newsubhead(subchapter.fk_chapter_id);">Add New Topic</a>
-                <ul *ngFor="let content of maincontent">
-                    <li class="content" *ngIf="(content.fk_subhead_id == subchapter.subhead_id )">{{content.main_title}}<a href="#">Add New Content</a>                        
-                    </li>              
-                </ul> 
-            </li>           
-        </ul>  
-    </li>      
-</ul>
-<form>
-    <input type="text" name="sub_sec_title"  [(ngModel)]="sub_sec_title" >
-    <input type="hidden" name="chapter_id"  [(ngModel)]="chapter_id" >
-    <button type="submit" class="btn btn-success" (click)="addsubsection()" >Submit</button>
-</form>
-<form>
-    <textarea name="main_sec_title"  [(ngModel)]="main_sec_title"></textarea>
-    <input type="hidden" name="subhead_id"  [(ngModel)]="subhead_id" >
-    <angular-editor name="main_content" [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"></angular-editor>
-    <button type="submit" class="btn btn-success" (click)="addmaincontent()" >Submit</button>
-   
-</form>
+<div class="demo-button-container">
+  <button mat-raised-button (click)="addData()" class="demo-button">
+    Add New Chapter
+  </button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{element.position}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="chapter">
+    <th mat-header-cell *matHeaderCellDef>Chapter</th>
+    <td mat-cell *matCellDef="let element">{{element.chapter}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="sections">
+    <th mat-header-cell *matHeaderCellDef>No. Of Sections</th>
+    <td mat-cell *matCellDef="let element">{{element.sections}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="contents">
+    <th mat-header-cell *matHeaderCellDef>No. Of Contents</th>
+    <td mat-cell *matCellDef="let element">{{element.contents}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "chapterClicked(row)"></tr>
+</table>
