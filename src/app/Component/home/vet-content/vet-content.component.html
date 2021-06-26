@@ -1,28 +1,28 @@
-<form>
-    <input type="text" name="sec_title"  [(ngModel)]="sec_title" >
-    <button type="submit" class="btn btn-success" (click)="addsection()" >Submit</button>
-</form>
 <ul class="chapterlist">
-    <li class="content" *ngFor="let chapter of chapterlist">{{chapter.chapter_name}}<a href="#">Add new Chapter</a>
+    <li class="content" *ngFor="let chapter of chapterlist">{{chapter.chapter_name}} 
         <ul *ngFor="let subchapter of subchapterlist">
-            <li class="content" *ngIf="(subchapter.fk_chapter_id == chapter.chapter_id)">{{subchapter.subhead_name}}<a (click)="newsubhead(subchapter.fk_chapter_id);">Add New Topic</a>
+            <li class="content" *ngIf="(subchapter.fk_chapter_id == chapter.chapter_id)">{{subchapter.subhead_name}} 
                 <ul *ngFor="let content of maincontent">
-                    <li class="content" *ngIf="(content.fk_subhead_id == subchapter.subhead_id )">{{content.main_title}}<a href="#">Add New Content</a>                        
-                    </li>              
-                </ul> 
+                    <li class="content" *ngIf="(content.fk_subhead_id == subchapter.subhead_id )">{{content.main_title}}                        
+                    </li>           
+                </ul><a (click)="toggleEditor('main_content',subchapter.subhead_id)">Add New Content</a>     
             </li>           
-        </ul>  
-    </li>      
+        </ul><a (click)="toggleEditor('subchapter',chapter.chapter_id)">Add New Topic</a>  
+    </li><a (click)="toggleEditor('chapter','123')">Add new Chapter</a>
+          
 </ul>
-<form>
-    <input type="text" name="sub_sec_title"  [(ngModel)]="sub_sec_title" >
-    <input type="hidden" name="chapter_id"  [(ngModel)]="chapter_id" >
-    <button type="submit" class="btn btn-success" (click)="addsubsection()" >Submit</button>
+<form *ngIf="showChapterForm" [formGroup]="sectionForm" (ngSubmit)="onSubmit()"> 
+    <input type="text" name="sec_title" formControlName="sec_title_f" [(ngModel)]="sec_title" >
+    <button type="submit" class="btn btn-primary" (click)="addsection()">Submit</button>
 </form>
-<form>
-    <textarea name="main_sec_title"  [(ngModel)]="main_sec_title"></textarea>
-    <input type="hidden" name="subhead_id"  [(ngModel)]="subhead_id" >
-    <angular-editor name="main_content" [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"></angular-editor>
-    <button type="submit" class="btn btn-success" (click)="addmaincontent()" >Submit</button>
-   
+<form *ngIf="showSubChapterForm" [formGroup]="subchapterForm" (ngSubmit)="onSubmit()">
+    <input type="text" name="sub_sec_title" formControlName ="sub_sec_title_f" [(ngModel)]="sub_sec_title" >
+    <input type="hidden" name="chapter_id"  formControlName ="chapter_id_f" [(ngModel)]="chapter_id" >
+    <button type="submit" class="btn btn-primary" (click)="addsubsection()">Submit</button>
+</form>
+<form *ngIf="showMainContentForm" [formGroup]="mainContentForm" (ngSubmit)="onSubmit()">
+    <textarea name="main_sec_title" formControlName="main_sec_title_f" [(ngModel)]="main_sec_title"></textarea>
+    <input type="hidden" name="subhead_id" formControlName="subhead_id_f" [(ngModel)]="subhead_id" >
+    <angular-editor name="main_content" formControlName="main_content_f" [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"></angular-editor>
+    <button type="submit" class="btn btn-primary" (click)="addmaincontent()">Submit</button>  
 </form>
