@@ -60,7 +60,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule, FaIconLibrary   } from '@fortawesome/angular-fontawesome'
 
 
 @NgModule({
@@ -85,6 +85,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     AngularEditorModule,
     FontAwesomeModule,
     MatTableModule,
+    MatCardModule,
+    MatGridListModule,
+    MatToolbarModule,
+    FaIconLibrary,
 
   ],
   exports: [
